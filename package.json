@@ -1,0 +1,42 @@
+{
+  "name": "Littel",
+  "description": "The Little Framework is a CSS framework for automatic responsitivity",
+  "version": "0.1.0",
+  "license": "MIT",
+  "author": {
+    "name": "Karl Oscar Weber",
+    "email": "me@kow.fm"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/karloscarweber/littel.git"
+  },
+  "bugs": "https://github.com/karloscarweber/littel/issues",
+  "contributors": "https://github.com/karloscarweber/parts/graphs/contributors",
+  "scripts": {
+    "prebuild": " npm list gulp-cli || npm install -g gulp-cli ",
+    "build": "gulp build"
+  },
+  "devDependencies": {
+    "autoprefixer": "6.3.6",
+    "cssnano": "3.7.1",
+    "gulp": "^4.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-ejs": "^5.1.0",
+    "gulp-postcss": "^6.1.1",
+    "gulp-rename": "^2.0.0",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-watch": "4.3.8",
+    "postcss-color-function": "2.0.1",
+    "postcss-custom-media": "^7.0.4",
+    "postcss-custom-properties": "5.0.1",
+    "postcss-easy-import": "1.0.1"
+  },
+  "dependencies": {
+    "gulp-cli": "^2.3.0",
+    "gulp-plumber": "^1.2.1",
+    "gulp-sass": "^4.0.1",
+    "path": "^0.12.7",
+    "underscore": "^1.12.0"
+  }
+}
