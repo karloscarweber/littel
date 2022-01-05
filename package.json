@@ -17,6 +17,8 @@
     "prebuild": " npm list gulp-cli || npm install -g gulp-cli ",
     "build": "gulp build"
   },
+  "style": "dist/css/littel.css",
+  "sass": "src/scss/littel.scss",
   "devDependencies": {
     "autoprefixer": "6.3.6",
     "cssnano": "3.7.1",

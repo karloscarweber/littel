@@ -14,18 +14,19 @@ const ejs = require("gulp-ejs");
 
 function css() {
   return gulp
-    .src('src/sass/*.scss')
+    .src('src/scss/**/*.scss')
     .pipe(plumber())
     .pipe(sass({ outputStyle: "expanded" }))
     .pipe(gulp.dest('./public/assets/css/'))
-    .pipe(concat('styles.css'))
+    .pipe(concat('littel.css'))
     .pipe(postcss([custom_media(),autoprefixer()]))
     .pipe(gulp.dest('./public/assets/css/'))
+    .pipe(gulp.dest('./dist/css/'))
 }
 
 function generateHTML() {
   return gulp.src('./content/**/*.ejs')
-    .pipe(ejs({title: "LitteL"}))
+    .pipe(ejs({title: "Littel"}))
     .pipe(rename({ extname: '.html' }))
     .pipe(gulp.dest('./public/'))
 }
@@ -35,7 +36,7 @@ function watchFiles() {
   /* First build */
   gulp.parallel(css, generateHTML);
   /* Now Watch */
-  gulp.watch("./src/sass/**/*", css);
+  gulp.watch("./src/scss/**/*", css);
   gulp.watch("./src/content/**/*", generateHTML);
 }
 
