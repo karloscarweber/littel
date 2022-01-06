@@ -1,7 +1,7 @@
 {
-  "name": "Littel",
+  "name": "littel",
   "description": "The Little Framework is a CSS framework for automatic responsitivity",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "MIT",
   "author": {
     "name": "Karl Oscar Weber",
@@ -33,12 +33,12 @@
     "postcss-custom-media": "^7.0.4",
     "postcss-custom-properties": "5.0.1",
     "postcss-easy-import": "1.0.1"
-  },
-  "dependencies": {
     "gulp-cli": "^2.3.0",
     "gulp-plumber": "^1.2.1",
     "gulp-sass": "^4.0.1",
     "path": "^0.12.7",
     "underscore": "^1.12.0"
+  },
+  "dependencies": {
   }
 }
