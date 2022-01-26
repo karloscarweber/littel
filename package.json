@@ -32,7 +32,7 @@
     "postcss-color-function": "2.0.1",
     "postcss-custom-media": "^7.0.4",
     "postcss-custom-properties": "5.0.1",
-    "postcss-easy-import": "1.0.1"
+    "postcss-easy-import": "1.0.1",
     "gulp-cli": "^2.3.0",
     "gulp-plumber": "^1.2.1",
     "gulp-sass": "^4.0.1",

@@ -1,6 +1,35 @@
 /* littel include thing */
 /* Include reset, I think. */
 /* include basic building blocks */
+/* Variables */
+/*
+    Littel is controlled and dictated by CSS Variables. Everything is meant to
+    be part of a dynamic system. Those base variables are collected here.
+    Overwriting these variables down the CSS cascade is where the real magic
+    happens.
+
+    See: https://utopia.fyi/blog/clamp
+*/
+/* Dynamic type calculations setup. */
+:root {
+  --size-max-w: 100;
+  --size-min-w: 20;
+  --size-minus: (-1 * var(--size-min-w));
+  --size-w: (var(--size-max-w) - var(--size-min-w));
+  --size-min: 1;
+  --size-max: 2;
+  --size: clamp(var(--size-min) * 1rem,
+    ((var(--size-minus) * ((var(--sizemax) - var(--size-min)) / var(--size-w)) + var(--size-min)) * 1rem)
+    +
+    ((var(--size-max) - 1) / var(--size-w) * 100vw),
+    var(--size-max) * 1rem);
+}
+
+:root {
+  --ltl-font-size: 16px;
+  --ltl-margin-small: 16px;
+}
+
 .ltl-page {
   /* Page CSS stuff */
   box-sizing: border-box;
@@ -9,6 +38,7 @@
 .ltl-section {
   /* Section CSS stuff */
   box-sizing: border-box;
+  font-family: helvetica;
 }
 
 .ltl-container {
@@ -17,19 +47,5 @@
 
 /* Include component blocks, like Atoms */
 h1 {
-  font-size: 12px;
-}
-
-.ltl-container {
-  /* Container CSS stuff */
-}
-
-.ltl-page {
-  /* Page CSS stuff */
-  box-sizing: border-box;
-}
-
-.ltl-section {
-  /* Section CSS stuff */
-  box-sizing: border-box;
+  font-size: 13px;
 }

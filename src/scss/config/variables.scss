@@ -1,0 +1,33 @@
+/* Variables */
+/*
+    Littel is controlled and dictated by CSS Variables. Everything is meant to
+    be part of a dynamic system. Those base variables are collected here.
+    Overwriting these variables down the CSS cascade is where the real magic
+    happens.
+
+    See: https://utopia.fyi/blog/clamp
+*/
+
+/* Dynamic type calculations setup. */
+:root {
+    --size-max-w: 100; // 1600px in REM
+    --size-min-w: 20; // 320px in REM
+    --size-minus: (-1 * var(--size-min-w));
+    --size-w: (var(--size-max-w) - var(--size-min-w));
+
+    --size-min: 1; // Minimum Size
+    --size-max: 2; // Maximum Size
+    --size: clamp(var(--size-min) * 1rem,
+    ((var(--size-minus) * ((var(--sizemax) - var(--size-min)) / var(--size-w)) + var(--size-min)) * 1rem)
+    +
+    ((var(--size-max) - 1) / var(--size-w) * 100vw),
+    var(--size-max) * 1rem);
+    // In the above code replace --size-max-w with the max viewport size for the size variable, --size-min-w with the min viewport size of the scaleing.
+    // Then replace --size-min with the actual minimum size, and --size-max with the actual maximum size. All in REMS.
+    // Then change every instance of --size with the the variable name that you want for your variable.
+}
+
+:root {
+    --ltl-font-size: 16px;
+    --ltl-margin-small: 16px;
+}

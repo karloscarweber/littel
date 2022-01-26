@@ -2,11 +2,12 @@
 
 /* Include reset, I think. */
 /* include basic building blocks */
+@import "config/variables.scss";
 @import "foundation/page.scss";
 @import "foundation/section.scss";
 @import "foundation/container.scss";
 /* Include component blocks, like Atoms */
 
 h1 {
-   font-size: 12px;
+   font-size: 13px;
 }

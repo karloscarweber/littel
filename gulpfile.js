@@ -14,7 +14,8 @@ const ejs = require("gulp-ejs");
 
 function css() {
   return gulp
-    .src('src/scss/**/*.scss')
+    // .src('src/scss/**/*.scss')
+    .src('src/scss/littel.scss')
     .pipe(plumber())
     .pipe(sass({ outputStyle: "expanded" }))
     .pipe(gulp.dest('./public/assets/css/'))
@@ -37,7 +38,7 @@ function watchFiles() {
   gulp.parallel(css, generateHTML);
   /* Now Watch */
   gulp.watch("./src/scss/**/*", css);
-  gulp.watch("./src/content/**/*", generateHTML);
+  gulp.watch("./content/**/*", generateHTML);
 }
 
 const build = gulp.parallel(css, generateHTML);
