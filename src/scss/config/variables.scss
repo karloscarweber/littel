@@ -15,6 +15,8 @@
     --size-minus: (-1 * var(--size-min-w));
     --size-w: (var(--size-max-w) - var(--size-min-w));
 
+    --base-type-size: 16;
+
     --size-min: 1; // Minimum Size
     --size-max: 2; // Maximum Size
     --size: clamp(var(--size-min) * 1rem,
@@ -28,6 +30,254 @@
 }
 
 :root {
-    --ltl-font-size: 16px;
-    --ltl-margin-small: 16px;
+
+    --f--3-min: 1; // Minimum Size
+    --f--3-max: 2; // Maximum Size
+    --f--3: clamp(var(--size-min) * 1rem,
+    ((var(--size-minus) * ((var(--sizemax) - var(--f--3-min)) / var(--size-w)) + var(--f--3-min)) * 1rem)
+    +
+    ((var(--f--3-max) - 1) / var(--size-w) * 100vw),
+    var(--f--3-max) * 1rem);
+
+    --f--2-min: 1; // Minimum Size
+    --f--2-max: 2; // Maximum Size
+    --f--2: clamp(var(--size-min) * 1rem,
+    ((var(--size-minus) * ((var(--sizemax) - var(--f--2-min)) / var(--size-w)) + var(--f--2-min)) * 1rem)
+    +
+    ((var(--f--2-max) - 1) / var(--size-w) * 100vw),
+    var(--f--2-max) * 1rem);
+
+    --f--1-min: 1; // Minimum Size
+    --f--1-max: 2; // Maximum Size
+    --f--1: clamp(var(--size-min) * 1rem,
+    ((var(--size-minus) * ((var(--sizemax) - var(--f--1-min)) / var(--size-w)) + var(--f--1-min)) * 1rem)
+    +
+    ((var(--f--1-max) - 1) / var(--size-w) * 100vw),
+    var(--f--1-max) * 1rem);
+
+    --f-0-min: 1; // Minimum Size
+    --f-0-max: 2; // Maximum Size
+    --f-0: clamp(var(--size-min) * 1rem,
+    ((var(--size-minus) * ((var(--sizemax) - var(--f-0-min)) / var(--size-w)) + var(--f-0-min)) * 1rem)
+    +
+    ((var(--f-0-max) - 1) / var(--size-w) * 100vw),
+    var(--f-0-max) * 1rem);
+
+    --f-1-min: 1; // Minimum Size
+    --f-1-max: 2; // Maximum Size
+    --f-1: clamp(var(--size-min) * 1rem,
+    ((var(--size-minus) * ((var(--sizemax) - var(--f-1-min)) / var(--size-w)) + var(--f-1-min)) * 1rem)
+    +
+    ((var(--f-1-max) - 1) / var(--size-w) * 100vw),
+    var(--f-1-max) * 1rem);
+
+    --f-2-min: 1; // Minimum Size
+    --f-2-max: 2; // Maximum Size
+    --f-2: clamp(var(--size-min) * 1rem,
+    ((var(--size-minus) * ((var(--sizemax) - var(--f-2-min)) / var(--size-w)) + var(--f-2-min)) * 1rem)
+    +
+    ((var(--f-2-max) - 1) / var(--size-w) * 100vw),
+    var(--f-2-max) * 1rem);
+
+    --f-3-min: 1; // Minimum Size
+    --f-3-max: 2; // Maximum Size
+    --f-3: clamp(var(--size-min) * 1rem,
+    ((var(--size-minus) * ((var(--sizemax) - var(--f-3-min)) / var(--size-w)) + var(--f-3-min)) * 1rem)
+    +
+    ((var(--f-3-max) - 1) / var(--size-w) * 100vw),
+    var(--f-3-max) * 1rem);
+
+    --f-4-min: 1; // Minimum Size
+    --f-4-max: 2; // Maximum Size
+    --f-4: clamp(var(--size-min) * 1rem,
+    ((var(--size-minus) * ((var(--sizemax) - var(--f-4-min)) / var(--size-w)) + var(--f-4-min)) * 1rem)
+    +
+    ((var(--f-4-max) - 1) / var(--size-w) * 100vw),
+    var(--f-4-max) * 1rem);
+
+    --f-5-min: 1; // Minimum Size
+    --f-5-max: 2; // Maximum Size
+    --f-5: clamp(var(--size-min) * 1rem,
+    ((var(--size-minus) * ((var(--sizemax) - var(--f-5-min)) / var(--size-w)) + var(--f-5-min)) * 1rem)
+    +
+    ((var(--f-5-max) - 1) / var(--size-w) * 100vw),
+    var(--f-5-max) * 1rem);
+
+    --f-6-min: 1; // Minimum Size
+    --f-6-max: 2; // Maximum Size
+    --f-6: clamp(var(--size-min) * 1rem,
+    ((var(--size-minus) * ((var(--sizemax) - var(--f-6-min)) / var(--size-w)) + var(--f-6-min)) * 1rem)
+    +
+    ((var(--f-6-max) - 1) / var(--size-w) * 100vw),
+    var(--f-6-max) * 1rem);
+
+    --f-7-min: 1; // Minimum Size
+    --f-7-max: 2; // Maximum Size
+    --f-7: clamp(var(--size-min) * 1rem,
+    ((var(--size-minus) * ((var(--sizemax) - var(--f-7-min)) / var(--size-w)) + var(--f-7-min)) * 1rem)
+    +
+    ((var(--f-7-max) - 1) / var(--size-w) * 100vw),
+    var(--f-7-max) * 1rem);
+
+}
+
+
+:root {
+
+    // size adapters for fluid sizing
+
+  --fluid-min-width: calc( var(--size-min-w) * 16 );
+  --fluid-max-width: calc( var(--size-max-w) * 16 );
+
+  --fluid-screen: 100vw;
+  --fluid-bp: calc((var(--fluid-screen) - var(--fluid-min-width) / var(--base-type-size) * 1rem) / (var(--fluid-max-width) - var(--fluid-min-width)));
+}
+
+@media screen and (min-width: 1600px) {
+  :root {
+    --fluid-screen: calc(var(--fluid-max-width) * 1px);
+  }
+}
+
+
+/* @link https://utopia.fyi/space/calculator?c=320,20,1.25,1600,25,1.333,7,3,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l */
+
+:root {
+  --fc-3xs-min: (var(--fc-s-min) * 0.25);
+  --fc-3xs-max: (var(--fc-s-max) * 0.25);
+
+  --fc-2xs-min: (var(--fc-s-min) * 0.5);
+  --fc-2xs-max: (var(--fc-s-max) * 0.5);
+
+  --fc-xs-min: (var(--fc-s-min) * 0.75);
+  --fc-xs-max: (var(--fc-s-max) * 0.75);
+
+  --fc-s-min: (var(--f-0-min));
+  --fc-s-max: (var(--f-0-max));
+
+  --fc-m-min: (var(--fc-s-min) * 1.5);
+  --fc-m-max: (var(--fc-s-max) * 1.5);
+
+  --fc-l-min: (var(--fc-s-min) * 2);
+  --fc-l-max: (var(--fc-s-max) * 2);
+
+  --fc-xl-min: (var(--fc-s-min) * 3);
+  --fc-xl-max: (var(--fc-s-max) * 3);
+
+  --fc-2xl-min: (var(--fc-s-min) * 4);
+  --fc-2xl-max: (var(--fc-s-max) * 4);
+
+  --fc-3xl-min: (var(--fc-s-min) * 6);
+  --fc-3xl-max: (var(--fc-s-max) * 6);
+
+  /* T-shirt sizes */
+  --space-3xs: calc(((var(--fc-3xs-min) / var(--base-type-size)) * 1rem) + (var(--fc-3xs-max) - var(--fc-3xs-min)) * var(--fluid-bp));
+  --space-2xs: calc(((var(--fc-2xs-min) / var(--base-type-size)) * 1rem) + (var(--fc-2xs-max) - var(--fc-2xs-min)) * var(--fluid-bp));
+  --space-xs: calc(((var(--fc-xs-min) / var(--base-type-size)) * 1rem) + (var(--fc-xs-max) - var(--fc-xs-min)) * var(--fluid-bp));
+  --space-s: calc(((var(--fc-s-min) / var(--base-type-size)) * 1rem) + (var(--fc-s-max) - var(--fc-s-min)) * var(--fluid-bp));
+  --space-m: calc(((var(--fc-m-min) / var(--base-type-size)) * 1rem) + (var(--fc-m-max) - var(--fc-m-min)) * var(--fluid-bp));
+  --space-l: calc(((var(--fc-l-min) / var(--base-type-size)) * 1rem) + (var(--fc-l-max) - var(--fc-l-min)) * var(--fluid-bp));
+  --space-xl: calc(((var(--fc-xl-min) / var(--base-type-size)) * 1rem) + (var(--fc-xl-max) - var(--fc-xl-min)) * var(--fluid-bp));
+  --space-2xl: calc(((var(--fc-2xl-min) / var(--base-type-size)) * 1rem) + (var(--fc-2xl-max) - var(--fc-2xl-min)) * var(--fluid-bp));
+  --space-3xl: calc(((var(--fc-3xl-min) / var(--base-type-size)) * 1rem) + (var(--fc-3xl-max) - var(--fc-3xl-min)) * var(--fluid-bp));
+
+  /* One-up pairs */
+  --space-3xs-2xs: calc(((var(--fc-3xs-min) / var(--base-type-size)) * 1rem) + (var(--fc-2xs-max) - var(--fc-3xs-min)) * var(--fluid-bp));
+  --space-2xs-xs: calc(((var(--fc-2xs-min) / var(--base-type-size)) * 1rem) + (var(--fc-xs-max) - var(--fc-2xs-min)) * var(--fluid-bp));
+  --space-xs-s: calc(((var(--fc-xs-min) / var(--base-type-size)) * 1rem) + (var(--fc-s-max) - var(--fc-xs-min)) * var(--fluid-bp));
+  --space-s-m: calc(((var(--fc-s-min) / var(--base-type-size)) * 1rem) + (var(--fc-m-max) - var(--fc-s-min)) * var(--fluid-bp));
+  --space-m-l: calc(((var(--fc-m-min) / var(--base-type-size)) * 1rem) + (var(--fc-l-max) - var(--fc-m-min)) * var(--fluid-bp));
+  --space-l-xl: calc(((var(--fc-l-min) / var(--base-type-size)) * 1rem) + (var(--fc-xl-max) - var(--fc-l-min)) * var(--fluid-bp));
+  --space-xl-2xl: calc(((var(--fc-xl-min) / var(--base-type-size)) * 1rem) + (var(--fc-2xl-max) - var(--fc-xl-min)) * var(--fluid-bp));
+  --space-2xl-3xl: calc(((var(--fc-2xl-min) / var(--base-type-size)) * 1rem) + (var(--fc-3xl-max) - var(--fc-2xl-min)) * var(--fluid-bp));
+
+  /* Custom pairs */
+  --space-s-l: calc(((var(--fc-s-min) / var(--base-type-size)) * 1rem) + (var(--fc-l-max) - var(--fc-s-min)) * var(--fluid-bp));
+}
+
+// :root {
+//     /*
+//         Linear Type Scale
+//         Not really useful at larger sizes because they are HUGE,
+//         But illustrates size/shape relationships and is pretty useful to modify
+//         for your own themes.
+//     */
+//
+//     --f--3-min: 0.25; // 4px
+//     --f--3-max: 0.5;  // 8px
+//
+//     --f--2-min: 0.5;  // 8px
+//     --f--2-max: 1;    // 16px
+//
+//     --f--1-min: 0.75; // 12px
+//     --f--1-max: 1.5;  // 24px
+//
+//     --f-0-min: 1;     // 16px
+//     --f-0-max: 2;     // 32px
+//
+//     --f-1-min: 1.5;   // 24px
+//     --f-1-max: 3;     // 48px
+//
+//     --f-2-min: 2;     // 32px
+//     --f-2-max: 4;     // 64px
+//
+//     --f-3-min: 3;     // 48px
+//     --f-3-max: 6;     // 96px
+//
+//     --f-4-min: 4;     // 64px
+//     --f-4-max: 8;     // 128px
+//
+//     --f-5-min: 6;     // 96px
+//     --f-5-max: 12;    // 192px
+//
+//     --f-6-min: 8;     // 128px
+//     --f-6-max: 16;    // 256px
+//
+//     --f-7-min: 12;    // 192px
+//     --f-7-max: 24;    // 384px
+// }
+
+:root {
+    /*
+        Stepped Type Scale
+        https://utopia.fyi/type/calculator?c=320,20,1.25,1440,25,1.333,7,3,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l
+    */
+
+    --f--3-min: 0.64;         // 10.24px
+    --f--3-max: 0.0.659375;   // 10.55px
+
+    --f--2-min: 0.8;          // 12.8px
+    --f--2-max: 0.879375;     // 14.07px
+
+    --f--1-min: 1;            // 16px
+    --f--1-max: 1.5;          // 18.75px
+
+    --f-0-min: 1.25;          // 20px
+    --f-0-max: 1.5625;        // 25px
+
+    --f-1-min: 1.5625;        // 25px
+    --f-1-max: 2.0825;        // 33.32px
+
+    --f-2-min: 1.953125;      // 31.25px
+    --f-2-max: 2.77625;       // 44.42px
+
+    --f-3-min: 2.44125;       // 39.06px
+    --f-3-max: 3.700625;      // 59.21px
+
+    --f-4-min: 3.051875;      // 48.83px
+    --f-4-max: 4.933125;      // 78.93px
+
+    --f-5-min: 3.815;         // 61.04px
+    --f-5-max: 6.57625;       // 105.22px
+
+    --f-6-min: 4.768125;      // 76.29px
+    --f-6-max: 8.76625;       // 140.26px
+
+    --f-7-min: 5.960625;      // 95.37px
+    --f-7-max: 11.685;        // 186.96px
+}
+
+:root {
+    --ltl-font-size: var(--f-0);
+    --ltl-margin-small: 1em;
 }
