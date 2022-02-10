@@ -1,5 +1,80 @@
 /* littel include thing */
 /* Include reset, I think. */
+/* Reset from: https://github.com/hankchizljaw/modern-css-reset */
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations and transitions for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 /* include basic building blocks */
 /* Variables */
 /*
@@ -16,6 +91,7 @@
   --size-min-w: 20;
   --size-minus: (-1 * var(--size-min-w));
   --size-w: (var(--size-max-w) - var(--size-min-w));
+  --base-type-size: 16;
   --size-min: 1;
   --size-max: 2;
   --size: clamp(var(--size-min) * 1rem,
@@ -26,8 +102,183 @@
 }
 
 :root {
-  --ltl-font-size: 16px;
-  --ltl-margin-small: 16px;
+  --f--4-min: 1;
+  --f--4-max: 2;
+  --f--4: clamp(var(--f--4-min) * 1rem,
+  ((var(--size-minus) * ((var(--f--4-max) - var(--f--4-min)) / var(--size-w)) + var(--f--4-min)) * 1rem)
+  +
+  ((var(--f--4-max) - 1) / var(--size-w) * 100vw),
+  var(--f--4-max) * 1rem);
+  --f--3-min: 1;
+  --f--3-max: 2;
+  --f--3: clamp(var(--f--3-min) * 1rem,
+  ((var(--size-minus) * ((var(--f--3-max) - var(--f--3-min)) / var(--size-w)) + var(--f--3-min)) * 1rem)
+  +
+  ((var(--f--3-max) - 1) / var(--size-w) * 100vw),
+  var(--f--3-max) * 1rem);
+  --f--2-min: 1;
+  --f--2-max: 2;
+  --f--2: clamp(var(--f--2-min) * 1rem,
+  ((var(--size-minus) * ((var(--f--2-max) - var(--f--2-min)) / var(--size-w)) + var(--f--2-min)) * 1rem)
+  +
+  ((var(--f--2-max) - 1) / var(--size-w) * 100vw),
+  var(--f--2-max) * 1rem);
+  --f--1-min: 1;
+  --f--1-max: 2;
+  --f--1: clamp(var(--f--1-min) * 1rem,
+  ((var(--size-minus) * ((var(--f--1-max) - var(--f--1-min)) / var(--size-w)) + var(--f--1-min)) * 1rem)
+  +
+  ((var(--f--1-max) - 1) / var(--size-w) * 100vw),
+  var(--f--1-max) * 1rem);
+  --f-0-min: 1;
+  --f-0-max: 2;
+  --f-0: clamp(var(--f-0-min) * 1rem,
+  ((var(--size-minus) * ((var(--f-0-max) - var(--f-0-min)) / var(--size-w)) + var(--f-0-min)) * 1rem)
+  +
+  ((var(--f-0-max) - 1) / var(--size-w) * 100vw),
+  var(--f-0-max) * 1rem);
+  --f-1-min: 1;
+  --f-1-max: 2;
+  --f-1: clamp(var(--f-1-min) * 1rem,
+  ((var(--size-minus) * ((var(--f-1-max) - var(--f-1-min)) / var(--size-w)) + var(--f-1-min)) * 1rem)
+  +
+  ((var(--f-1-max) - 1) / var(--size-w) * 100vw),
+  var(--f-1-max) * 1rem);
+  --f-2-min: 1;
+  --f-2-max: 2;
+  --f-2: clamp(var(--f-2-min) * 1rem,
+  ((var(--size-minus) * ((var(--f-2-max) - var(--f-2-min)) / var(--size-w)) + var(--f-2-min)) * 1rem)
+  +
+  ((var(--f-2-max) - 1) / var(--size-w) * 100vw),
+  var(--f-2-max) * 1rem);
+  --f-3-min: 1;
+  --f-3-max: 2;
+  --f-3: clamp(var(--f-3-min) * 1rem,
+  ((var(--size-minus) * ((var(--f-3-max) - var(--f-3-min)) / var(--size-w)) + var(--f-3-min)) * 1rem)
+  +
+  ((var(--f-3-max) - 1) / var(--size-w) * 100vw),
+  var(--f-3-max) * 1rem);
+  --f-4-min: 1;
+  --f-4-max: 2;
+  --f-4: clamp(var(--f-4-min) * 1rem,
+  ((var(--size-minus) * ((var(--f-4-max) - var(--f-4-min)) / var(--size-w)) + var(--f-4-min)) * 1rem)
+  +
+  ((var(--f-4-max) - 1) / var(--size-w) * 100vw),
+  var(--f-4-max) * 1rem);
+  --f-5-min: 1;
+  --f-5-max: 2;
+  --f-5: clamp(var(--f-5-min) * 1rem,
+  ((var(--size-minus) * ((var(--f-5-max) - var(--f-5-min)) / var(--size-w)) + var(--f-5-min)) * 1rem)
+  +
+  ((var(--f-5-max) - 1) / var(--size-w) * 100vw),
+  var(--f-5-max) * 1rem);
+  --f-6-min: 1;
+  --f-6-max: 2;
+  --f-6: clamp(var(--f-6-min) * 1rem,
+  ((var(--size-minus) * ((var(--f-6-max) - var(--f-6-min)) / var(--size-w)) + var(--f-6-min)) * 1rem)
+  +
+  ((var(--f-6-max) - 1) / var(--size-w) * 100vw),
+  var(--f-6-max) * 1rem);
+  --f-7-min: 1;
+  --f-7-max: 2;
+  --f-7: clamp(var(--f-7-min) * 1rem,
+  ((var(--size-minus) * ((var(--f-7-max) - var(--f-7-min)) / var(--size-w)) + var(--f-7-min)) * 1rem)
+  +
+  ((var(--f-7-max) - 1) / var(--size-w) * 100vw),
+  var(--f-7-max) * 1rem);
+}
+
+:root {
+  --fluid-min-width: calc( var(--size-min-w) * 16 );
+  --fluid-max-width: calc( var(--size-max-w) * 16 );
+  --fluid-screen: 100vw;
+  --fluid-bp: calc((var(--fluid-screen) - var(--fluid-min-width) / var(--base-type-size) * 1rem) / (var(--fluid-max-width) - var(--fluid-min-width)));
+}
+
+@media screen and (min-width: 1600px) {
+  :root {
+    --fluid-screen: calc(var(--fluid-max-width) * 1px);
+  }
+}
+
+/* @link https://utopia.fyi/space/calculator?c=320,20,1.25,1600,25,1.333,7,3,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l */
+:root {
+  --fc-3xs-min: (var(--fc-s-min) * 0.25);
+  --fc-3xs-max: (var(--fc-s-max) * 0.25);
+  --fc-2xs-min: (var(--fc-s-min) * 0.5);
+  --fc-2xs-max: (var(--fc-s-max) * 0.5);
+  --fc-xs-min: (var(--fc-s-min) * 0.75);
+  --fc-xs-max: (var(--fc-s-max) * 0.75);
+  --fc-s-min: (var(--f-0-min));
+  --fc-s-max: (var(--f-0-max));
+  --fc-m-min: (var(--fc-s-min) * 1.5);
+  --fc-m-max: (var(--fc-s-max) * 1.5);
+  --fc-l-min: (var(--fc-s-min) * 2);
+  --fc-l-max: (var(--fc-s-max) * 2);
+  --fc-xl-min: (var(--fc-s-min) * 3);
+  --fc-xl-max: (var(--fc-s-max) * 3);
+  --fc-2xl-min: (var(--fc-s-min) * 4);
+  --fc-2xl-max: (var(--fc-s-max) * 4);
+  --fc-3xl-min: (var(--fc-s-min) * 6);
+  --fc-3xl-max: (var(--fc-s-max) * 6);
+  /* T-shirt sizes */
+  --space-3xs: calc(((var(--fc-3xs-min) / var(--base-type-size)) * 1rem) + (var(--fc-3xs-max) - var(--fc-3xs-min)) * var(--fluid-bp));
+  --space-2xs: calc(((var(--fc-2xs-min) / var(--base-type-size)) * 1rem) + (var(--fc-2xs-max) - var(--fc-2xs-min)) * var(--fluid-bp));
+  --space-xs: calc(((var(--fc-xs-min) / var(--base-type-size)) * 1rem) + (var(--fc-xs-max) - var(--fc-xs-min)) * var(--fluid-bp));
+  --space-s: calc(((var(--fc-s-min) / var(--base-type-size)) * 1rem) + (var(--fc-s-max) - var(--fc-s-min)) * var(--fluid-bp));
+  --space-m: calc(((var(--fc-m-min) / var(--base-type-size)) * 1rem) + (var(--fc-m-max) - var(--fc-m-min)) * var(--fluid-bp));
+  --space-l: calc(((var(--fc-l-min) / var(--base-type-size)) * 1rem) + (var(--fc-l-max) - var(--fc-l-min)) * var(--fluid-bp));
+  --space-xl: calc(((var(--fc-xl-min) / var(--base-type-size)) * 1rem) + (var(--fc-xl-max) - var(--fc-xl-min)) * var(--fluid-bp));
+  --space-2xl: calc(((var(--fc-2xl-min) / var(--base-type-size)) * 1rem) + (var(--fc-2xl-max) - var(--fc-2xl-min)) * var(--fluid-bp));
+  --space-3xl: calc(((var(--fc-3xl-min) / var(--base-type-size)) * 1rem) + (var(--fc-3xl-max) - var(--fc-3xl-min)) * var(--fluid-bp));
+  /* One-up pairs */
+  --space-3xs-2xs: calc(((var(--fc-3xs-min) / var(--base-type-size)) * 1rem) + (var(--fc-2xs-max) - var(--fc-3xs-min)) * var(--fluid-bp));
+  --space-2xs-xs: calc(((var(--fc-2xs-min) / var(--base-type-size)) * 1rem) + (var(--fc-xs-max) - var(--fc-2xs-min)) * var(--fluid-bp));
+  --space-xs-s: calc(((var(--fc-xs-min) / var(--base-type-size)) * 1rem) + (var(--fc-s-max) - var(--fc-xs-min)) * var(--fluid-bp));
+  --space-s-m: calc(((var(--fc-s-min) / var(--base-type-size)) * 1rem) + (var(--fc-m-max) - var(--fc-s-min)) * var(--fluid-bp));
+  --space-m-l: calc(((var(--fc-m-min) / var(--base-type-size)) * 1rem) + (var(--fc-l-max) - var(--fc-m-min)) * var(--fluid-bp));
+  --space-l-xl: calc(((var(--fc-l-min) / var(--base-type-size)) * 1rem) + (var(--fc-xl-max) - var(--fc-l-min)) * var(--fluid-bp));
+  --space-xl-2xl: calc(((var(--fc-xl-min) / var(--base-type-size)) * 1rem) + (var(--fc-2xl-max) - var(--fc-xl-min)) * var(--fluid-bp));
+  --space-2xl-3xl: calc(((var(--fc-2xl-min) / var(--base-type-size)) * 1rem) + (var(--fc-3xl-max) - var(--fc-2xl-min)) * var(--fluid-bp));
+  /* Custom pairs */
+  --space-s-l: calc(((var(--fc-s-min) / var(--base-type-size)) * 1rem) + (var(--fc-l-max) - var(--fc-s-min)) * var(--fluid-bp));
+}
+
+:root {
+  /*
+        Stepped Type Scale
+        https://utopia.fyi/type/calculator?c=320,20,1.25,1440,25,1.333,7,3,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l
+    */
+  --f--3-min: 0.64;
+  --f--3-max: 0.659375;
+  --f--2-min: 0.8;
+  --f--2-max: 0.879375;
+  --f--1-min: 1;
+  --f--1-max: 1.5;
+  --f-0-min: 1.25;
+  --f-0-max: 1.5625;
+  --f-1-min: 1.5625;
+  --f-1-max: 2.0825;
+  --f-2-min: 1.953125;
+  --f-2-max: 2.77625;
+  --f-3-min: 2.44125;
+  --f-3-max: 3.700625;
+  --f-4-min: 3.051875;
+  --f-4-max: 4.933125;
+  --f-5-min: 3.815;
+  --f-5-max: 6.57625;
+  --f-6-min: 4.768125;
+  --f-6-max: 8.76625;
+  --f-7-min: 5.960625;
+  --f-7-max: 11.685;
+}
+
+:root {
+  --ltl-font-size: var(--f-0);
+  --ltl-margin-small: 1em;
+  --ltl-heading-line-height: 1em;
+  --ltl-text-line-height: 1.2em;
+  --ltl-blockquote-line-height: 1.5em;
 }
 
 .ltl-page {
@@ -46,6 +297,105 @@
 }
 
 /* Include component blocks, like Atoms */
-h1 {
-  font-size: 13px;
+/* content stuff */
+/* font sizing utility classes */
+.f-f--3 {
+  font-size: var(--f--3);
+}
+
+.f-f--2 {
+  font-size: var(--f--2);
+}
+
+.f-f--1 {
+  font-size: var(--f--1);
+}
+
+.f-f-0 {
+  font-size: var(--f-0);
+}
+
+.f-f-1 {
+  font-size: var(--f-1);
+}
+
+.f-f-2 {
+  font-size: var(--f-2);
+}
+
+.f-f-3 {
+  font-size: var(--f-3);
+}
+
+.f-f-4 {
+  font-size: var(--f-4);
+}
+
+.f-f-5 {
+  font-size: var(--f-5);
+}
+
+.f-f-6 {
+  font-size: var(--f-6);
+}
+
+.f-f-7 {
+  font-size: var(--f-7);
+}
+
+/* line-height Utility Classes */
+.lh-heading {
+  line-height: var(--ltl-heading-line-height);
+}
+
+.lh-text {
+  line-height: var(--ltl-text-line-height);
+}
+
+.lh-blockquote {
+  line-height: var(--ltl-blockquote-line-height);
+}
+
+/* Type Margins */
+/* typographic normals */
+.t-heading {
+  font-size: var(--f-5);
+  line-height: var(--ltl-heading-line-height);
+  margin-bottom: 0.5em;
+}
+
+.t-sub-heading {
+  font-size: var(--f-4);
+  line-height: var(--ltl-heading-line-height);
+  margin-bottom: 0.5em;
+}
+
+.t-section-heading {
+  font-size: var(--f-3);
+  line-height: var(--ltl-heading-line-height);
+  margin-bottom: 0.5em;
+}
+
+.t-para-heading {
+  font-size: var(--f-2);
+  line-height: var(--ltl-heading-line-height);
+  margin-bottom: 0.5em;
+}
+
+.t-important-text {
+  font-size: var(--f-1);
+  line-height: var(--ltl-text-line-height);
+  margin-bottom: 1em;
+}
+
+.t-text {
+  font-size: var(--f-0);
+  line-height: var(--ltl-text-line-height);
+  margin-bottom: 1em;
+}
+
+.t-blockquote {
+  font-size: var(--f-3);
+  line-height: var(--ltl-blockquote-line-height);
+  margin-bottom: 0.5em;
 }

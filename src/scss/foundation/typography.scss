@@ -1,0 +1,81 @@
+/* font sizing utility classes */
+$font-map: (
+    f--3: var(--f--3),
+    f--2: var(--f--2),
+    f--1: var(--f--1),
+    f-0:  var(--f-0),
+    f-1:  var(--f-1),
+    f-2:  var(--f-2),
+    f-3:  var(--f-3),
+    f-4:  var(--f-4),
+    f-5:  var(--f-5),
+    f-6:  var(--f-6),
+    f-7:  var(--f-7)
+);
+
+@mixin font-sizes {
+    @each $name, $variable in $font-map {
+        &-#{$name} {
+            font-size: $variable;
+        }
+    }
+}
+
+.f {
+    @include font-sizes();
+}
+
+@mixin font-size($step-name) {
+    font-size: var(#{$step-name});
+}
+
+/* line-height Utility Classes */
+@mixin lh-heading { line-height: var(--ltl-heading-line-height); }
+@mixin lh-text { line-height: var(--ltl-text-line-height); }
+@mixin lh-blockquote { line-height: var(--ltl-blockquote-line-height); }
+
+.lh-heading { @include lh-heading; }
+.lh-text { @include lh-text; }
+.lh-blockquote { @include lh-blockquote; }
+
+/* Type Margins */
+@mixin mb-heading { margin-bottom: 0.5em; }
+@mixin mb-text { margin-bottom: 1em; }
+
+
+/* typographic normals */
+.t-heading {
+    @include font-size(--f-5);
+    @include lh-heading;
+    @include mb-heading;
+}
+.t-sub-heading {
+    @include font-size(--f-4);
+    @include lh-heading;
+    @include mb-heading;
+}
+.t-section-heading {
+    @include font-size(--f-3);
+    @include lh-heading;
+    @include mb-heading;
+}
+.t-para-heading {
+    @include font-size(--f-2);
+    @include lh-heading;
+    @include mb-heading;
+}
+.t-important-text {
+    @include font-size(--f-1);
+    @include lh-text;
+    @include mb-text;
+}
+.t-text {
+    @include font-size(--f-0);
+    @include lh-text;
+    @include mb-text;
+}
+.t-blockquote {
+    @include font-size(--f-3);
+    @include lh-blockquote;
+    @include mb-heading;
+}

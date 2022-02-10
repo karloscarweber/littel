@@ -24,100 +24,32 @@
     +
     ((var(--size-max) - 1) / var(--size-w) * 100vw),
     var(--size-max) * 1rem);
-    // In the above code replace --size-max-w with the max viewport size for the size variable, --size-min-w with the min viewport size of the scaleing.
-    // Then replace --size-min with the actual minimum size, and --size-max with the actual maximum size. All in REMS.
-    // Then change every instance of --size with the the variable name that you want for your variable.
+}
+
+@mixin generate-step($name) {
+  --#{$name}-min: 1;
+  --#{$name}-max: 2;
+  --#{$name}: clamp(var(--#{$name}-min) * 1rem,
+  ((var(--size-minus) * ((var(--#{$name}-max) - var(--#{$name}-min)) / var(--size-w)) + var(--#{$name}-min)) * 1rem)
+  +
+  ((var(--#{$name}-max) - 1) / var(--size-w) * 100vw),
+  var(--#{$name}-max) * 1rem);
 }
 
 :root {
 
-    --f--3-min: 1; // Minimum Size
-    --f--3-max: 2; // Maximum Size
-    --f--3: clamp(var(--size-min) * 1rem,
-    ((var(--size-minus) * ((var(--sizemax) - var(--f--3-min)) / var(--size-w)) + var(--f--3-min)) * 1rem)
-    +
-    ((var(--f--3-max) - 1) / var(--size-w) * 100vw),
-    var(--f--3-max) * 1rem);
-
-    --f--2-min: 1; // Minimum Size
-    --f--2-max: 2; // Maximum Size
-    --f--2: clamp(var(--size-min) * 1rem,
-    ((var(--size-minus) * ((var(--sizemax) - var(--f--2-min)) / var(--size-w)) + var(--f--2-min)) * 1rem)
-    +
-    ((var(--f--2-max) - 1) / var(--size-w) * 100vw),
-    var(--f--2-max) * 1rem);
-
-    --f--1-min: 1; // Minimum Size
-    --f--1-max: 2; // Maximum Size
-    --f--1: clamp(var(--size-min) * 1rem,
-    ((var(--size-minus) * ((var(--sizemax) - var(--f--1-min)) / var(--size-w)) + var(--f--1-min)) * 1rem)
-    +
-    ((var(--f--1-max) - 1) / var(--size-w) * 100vw),
-    var(--f--1-max) * 1rem);
-
-    --f-0-min: 1; // Minimum Size
-    --f-0-max: 2; // Maximum Size
-    --f-0: clamp(var(--size-min) * 1rem,
-    ((var(--size-minus) * ((var(--sizemax) - var(--f-0-min)) / var(--size-w)) + var(--f-0-min)) * 1rem)
-    +
-    ((var(--f-0-max) - 1) / var(--size-w) * 100vw),
-    var(--f-0-max) * 1rem);
-
-    --f-1-min: 1; // Minimum Size
-    --f-1-max: 2; // Maximum Size
-    --f-1: clamp(var(--size-min) * 1rem,
-    ((var(--size-minus) * ((var(--sizemax) - var(--f-1-min)) / var(--size-w)) + var(--f-1-min)) * 1rem)
-    +
-    ((var(--f-1-max) - 1) / var(--size-w) * 100vw),
-    var(--f-1-max) * 1rem);
-
-    --f-2-min: 1; // Minimum Size
-    --f-2-max: 2; // Maximum Size
-    --f-2: clamp(var(--size-min) * 1rem,
-    ((var(--size-minus) * ((var(--sizemax) - var(--f-2-min)) / var(--size-w)) + var(--f-2-min)) * 1rem)
-    +
-    ((var(--f-2-max) - 1) / var(--size-w) * 100vw),
-    var(--f-2-max) * 1rem);
-
-    --f-3-min: 1; // Minimum Size
-    --f-3-max: 2; // Maximum Size
-    --f-3: clamp(var(--size-min) * 1rem,
-    ((var(--size-minus) * ((var(--sizemax) - var(--f-3-min)) / var(--size-w)) + var(--f-3-min)) * 1rem)
-    +
-    ((var(--f-3-max) - 1) / var(--size-w) * 100vw),
-    var(--f-3-max) * 1rem);
-
-    --f-4-min: 1; // Minimum Size
-    --f-4-max: 2; // Maximum Size
-    --f-4: clamp(var(--size-min) * 1rem,
-    ((var(--size-minus) * ((var(--sizemax) - var(--f-4-min)) / var(--size-w)) + var(--f-4-min)) * 1rem)
-    +
-    ((var(--f-4-max) - 1) / var(--size-w) * 100vw),
-    var(--f-4-max) * 1rem);
-
-    --f-5-min: 1; // Minimum Size
-    --f-5-max: 2; // Maximum Size
-    --f-5: clamp(var(--size-min) * 1rem,
-    ((var(--size-minus) * ((var(--sizemax) - var(--f-5-min)) / var(--size-w)) + var(--f-5-min)) * 1rem)
-    +
-    ((var(--f-5-max) - 1) / var(--size-w) * 100vw),
-    var(--f-5-max) * 1rem);
-
-    --f-6-min: 1; // Minimum Size
-    --f-6-max: 2; // Maximum Size
-    --f-6: clamp(var(--size-min) * 1rem,
-    ((var(--size-minus) * ((var(--sizemax) - var(--f-6-min)) / var(--size-w)) + var(--f-6-min)) * 1rem)
-    +
-    ((var(--f-6-max) - 1) / var(--size-w) * 100vw),
-    var(--f-6-max) * 1rem);
-
-    --f-7-min: 1; // Minimum Size
-    --f-7-max: 2; // Maximum Size
-    --f-7: clamp(var(--size-min) * 1rem,
-    ((var(--size-minus) * ((var(--sizemax) - var(--f-7-min)) / var(--size-w)) + var(--f-7-min)) * 1rem)
-    +
-    ((var(--f-7-max) - 1) / var(--size-w) * 100vw),
-    var(--f-7-max) * 1rem);
+  @include generate-step(f--4);
+  @include generate-step(f--3);
+  @include generate-step(f--2);
+  @include generate-step(f--1);
+  @include generate-step(f-0);
+  @include generate-step(f-1);
+  @include generate-step(f-2);
+  @include generate-step(f-3);
+  @include generate-step(f-4);
+  @include generate-step(f-5);
+  @include generate-step(f-6);
+  @include generate-step(f-7);
 
 }
 
@@ -244,7 +176,7 @@
     */
 
     --f--3-min: 0.64;         // 10.24px
-    --f--3-max: 0.0.659375;   // 10.55px
+    --f--3-max: 0.659375;   // 10.55px
 
     --f--2-min: 0.8;          // 12.8px
     --f--2-max: 0.879375;     // 14.07px
@@ -280,4 +212,10 @@
 :root {
     --ltl-font-size: var(--f-0);
     --ltl-margin-small: 1em;
+
+    --ltl-heading-line-height: 1em;
+    --ltl-text-line-height: 1.2em;
+    --ltl-blockquote-line-height: 1.5em;
+
 }
+
