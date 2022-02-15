@@ -10,30 +10,52 @@
 
 /* Dynamic type calculations setup. */
 :root {
-    --size-max-w: 100; // 1600px in REM
-    --size-min-w: 20; // 320px in REM
-    --size-minus: (-1 * var(--size-min-w));
-    --size-w: (var(--size-max-w) - var(--size-min-w));
+  --fluid-min-width: 320;
+  --fluid-max-width: 1600;
 
-    --base-type-size: 16;
+  --base-type-size: 16;
 
-    --size-min: 1; // Minimum Size
-    --size-max: 2; // Maximum Size
-    --size: clamp(var(--size-min) * 1rem,
-    ((var(--size-minus) * ((var(--sizemax) - var(--size-min)) / var(--size-w)) + var(--size-min)) * 1rem)
-    +
-    ((var(--size-max) - 1) / var(--size-w) * 100vw),
-    var(--size-max) * 1rem);
+  --fluid-screen: 100vw;
+  --fluid-bp: calc(
+    (var(--fluid-screen) - var(--fluid-min-width) / 16 * 1rem) /
+      (var(--fluid-max-width) - var(--fluid-min-width))
+  );
+
 }
+
+@media screen and (min-width: 1600px) {
+  :root {
+    --fluid-screen: calc(var(--fluid-max-width) * 1px);
+  }
+}
+
+// :root {
+//     --size-min: 1; // Minimum Size
+//     --size-max: 2; // Maximum Size
+//     --size: clamp(var(--size-min) * 1rem,
+//     ((var(--size-minus) * ((var(--size-max) - var(--size-min)) / var(--size-w)) + var(--size-min)) * 1rem)
+//     +
+//     ((var(--size-max) - 1) / var(--size-w) * 100vw),
+//     var(--size-max) * 1rem);
+// }
+
+// @mixin generate-step($name) {
+//   --#{$name}-min: 1;
+//   --#{$name}-max: 2;
+//   --#{$name}: clamp(var(--#{$name}-min) * 1rem,
+//   ((var(--size-minus) * ((var(--#{$name}-max) - var(--#{$name}-min)) / var(--size-w)) + var(--#{$name}-min)) * 1rem)
+//   +
+//   ((var(--#{$name}-max) - 1) / var(--size-w) * 100vw),
+//   var(--#{$name}-max) * 1rem);
+// }
 
 @mixin generate-step($name) {
   --#{$name}-min: 1;
   --#{$name}-max: 2;
-  --#{$name}: clamp(var(--#{$name}-min) * 1rem,
-  ((var(--size-minus) * ((var(--#{$name}-max) - var(--#{$name}-min)) / var(--size-w)) + var(--#{$name}-min)) * 1rem)
-  +
-  ((var(--#{$name}-max) - 1) / var(--size-w) * 100vw),
-  var(--#{$name}-max) * 1rem);
+  --#{$name}: calc(
+    ((var(--#{$name}-min) / 16) * 1rem) + (var(--#{$name}-max) - var(--#{$name}-min)) *
+      var(--fluid-bp)
+  );
 }
 
 :root {
@@ -58,11 +80,11 @@
 
     // size adapters for fluid sizing
 
-  --fluid-min-width: calc( var(--size-min-w) * 16 );
-  --fluid-max-width: calc( var(--size-max-w) * 16 );
+  // --fluid-min-width: calc( var(--size-min-w) * 16 );
+  // --fluid-max-width: calc( var(--size-max-w) * 16 );
 
-  --fluid-screen: 100vw;
-  --fluid-bp: calc((var(--fluid-screen) - var(--fluid-min-width) / var(--base-type-size) * 1rem) / (var(--fluid-max-width) - var(--fluid-min-width)));
+  // --fluid-screen: 100vw;
+  // --fluid-bp: calc((var(--fluid-screen) - var(--fluid-min-width) / var(--base-type-size) * 1rem) / (var(--fluid-max-width) - var(--fluid-min-width)));
 }
 
 @media screen and (min-width: 1600px) {
@@ -169,45 +191,86 @@
 //     --f-7-max: 24;    // 384px
 // }
 
+// :root {
+//     /*
+//         Stepped Type Scale
+//         https://utopia.fyi/type/calculator?c=320,20,1.25,1600,25,1.333,7,3,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l
+//     */
+//
+//     --f--3-min: 0.64;         // 10.24px
+//     --f--3-max: 0.659375;   // 10.55px
+//
+//     --f--2-min: 0.8;          // 12.8px
+//     --f--2-max: 0.879375;     // 14.07px
+//
+//     --f--1-min: 1;            // 16px
+//     --f--1-max: 1.5;          // 18.75px
+//
+//     --f-0-min: 1.25;          // 20px
+//     --f-0-max: 1.5625;        // 25px
+//
+//     --f-1-min: 1.5625;        // 25px
+//     --f-1-max: 2.0825;        // 33.32px
+//
+//     --f-2-min: 1.953125;      // 31.25px
+//     --f-2-max: 2.77625;       // 44.42px
+//
+//     --f-3-min: 2.44125;       // 39.06px
+//     --f-3-max: 3.700625;      // 59.21px
+//
+//     --f-4-min: 3.051875;      // 48.83px
+//     --f-4-max: 4.933125;      // 78.93px
+//
+//     --f-5-min: 3.815;         // 61.04px
+//     --f-5-max: 6.57625;       // 105.22px
+//
+//     --f-6-min: 4.768125;      // 76.29px
+//     --f-6-max: 8.76625;       // 140.26px
+//
+//     --f-7-min: 5.960625;      // 95.37px
+//     --f-7-max: 11.685;        // 186.96px
+// }
+
 :root {
     /*
         Stepped Type Scale
-        https://utopia.fyi/type/calculator?c=320,20,1.25,1440,25,1.333,7,3,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l
+        https://utopia.fyi/type/calculator?c=320,20,1.25,1600,25,1.333,7,3,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l
     */
 
-    --f--3-min: 0.64;         // 10.24px
-    --f--3-max: 0.659375;   // 10.55px
+    --f--3-min:  10.24;//  10.24px
+    --f--3-max:  10.55;//  10.55px
 
-    --f--2-min: 0.8;          // 12.8px
-    --f--2-max: 0.879375;     // 14.07px
+    --f--2-min:  12.8; //  12.8px
+    --f--2-max:  14.07;//  14.07px
 
-    --f--1-min: 1;            // 16px
-    --f--1-max: 1.5;          // 18.75px
+    --f--1-min:  16;   //  16px
+    --f--1-max:  18.75;//  18.75px
 
-    --f-0-min: 1.25;          // 20px
-    --f-0-max: 1.5625;        // 25px
+    --f-0-min:  20;    //  20px
+    --f-0-max:  25;    //  25px
 
-    --f-1-min: 1.5625;        // 25px
-    --f-1-max: 2.0825;        // 33.32px
+    --f-1-min:  25;    //  25px
+    --f-1-max:  33.32; //  33.32px
 
-    --f-2-min: 1.953125;      // 31.25px
-    --f-2-max: 2.77625;       // 44.42px
+    --f-2-min:  31.25; //  31.25px
+    --f-2-max:  44.42; //  44.42px
 
-    --f-3-min: 2.44125;       // 39.06px
-    --f-3-max: 3.700625;      // 59.21px
+    --f-3-min:  39.06; //  39.06px
+    --f-3-max:  59.21; //  59.21px
 
-    --f-4-min: 3.051875;      // 48.83px
-    --f-4-max: 4.933125;      // 78.93px
+    --f-4-min:  48.83; //  48.83px
+    --f-4-max:  78.93; //  78.93px
 
-    --f-5-min: 3.815;         // 61.04px
-    --f-5-max: 6.57625;       // 105.22px
+    --f-5-min:  61.04; //  61.04px
+    --f-5-max:  105.22;//  105.22px
 
-    --f-6-min: 4.768125;      // 76.29px
-    --f-6-max: 8.76625;       // 140.26px
+    --f-6-min:  76.29; //  76.29px
+    --f-6-max:  140.26;//  140.26px
 
-    --f-7-min: 5.960625;      // 95.37px
-    --f-7-max: 11.685;        // 186.96px
+    --f-7-min:  95.37; //  95.37px
+    --f-7-max:  186.96;//  186.96px
 }
+
 
 :root {
     --ltl-font-size: var(--f-0);

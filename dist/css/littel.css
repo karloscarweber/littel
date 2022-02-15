@@ -87,112 +87,95 @@ select {
 */
 /* Dynamic type calculations setup. */
 :root {
-  --size-max-w: 100;
-  --size-min-w: 20;
-  --size-minus: (-1 * var(--size-min-w));
-  --size-w: (var(--size-max-w) - var(--size-min-w));
+  --fluid-min-width: 320;
+  --fluid-max-width: 1600;
   --base-type-size: 16;
-  --size-min: 1;
-  --size-max: 2;
-  --size: clamp(var(--size-min) * 1rem,
-    ((var(--size-minus) * ((var(--sizemax) - var(--size-min)) / var(--size-w)) + var(--size-min)) * 1rem)
-    +
-    ((var(--size-max) - 1) / var(--size-w) * 100vw),
-    var(--size-max) * 1rem);
+  --fluid-screen: 100vw;
+  --fluid-bp: calc(
+    (var(--fluid-screen) - var(--fluid-min-width) / 16 * 1rem) /
+      (var(--fluid-max-width) - var(--fluid-min-width))
+  );
+}
+
+@media screen and (min-width: 1600px) {
+  :root {
+    --fluid-screen: calc(var(--fluid-max-width) * 1px);
+  }
 }
 
 :root {
   --f--4-min: 1;
   --f--4-max: 2;
-  --f--4: clamp(var(--f--4-min) * 1rem,
-  ((var(--size-minus) * ((var(--f--4-max) - var(--f--4-min)) / var(--size-w)) + var(--f--4-min)) * 1rem)
-  +
-  ((var(--f--4-max) - 1) / var(--size-w) * 100vw),
-  var(--f--4-max) * 1rem);
+  --f--4: calc(
+    ((var(--f--4-min) / 16) * 1rem) + (var(--f--4-max) - var(--f--4-min)) *
+      var(--fluid-bp)
+  );
   --f--3-min: 1;
   --f--3-max: 2;
-  --f--3: clamp(var(--f--3-min) * 1rem,
-  ((var(--size-minus) * ((var(--f--3-max) - var(--f--3-min)) / var(--size-w)) + var(--f--3-min)) * 1rem)
-  +
-  ((var(--f--3-max) - 1) / var(--size-w) * 100vw),
-  var(--f--3-max) * 1rem);
+  --f--3: calc(
+    ((var(--f--3-min) / 16) * 1rem) + (var(--f--3-max) - var(--f--3-min)) *
+      var(--fluid-bp)
+  );
   --f--2-min: 1;
   --f--2-max: 2;
-  --f--2: clamp(var(--f--2-min) * 1rem,
-  ((var(--size-minus) * ((var(--f--2-max) - var(--f--2-min)) / var(--size-w)) + var(--f--2-min)) * 1rem)
-  +
-  ((var(--f--2-max) - 1) / var(--size-w) * 100vw),
-  var(--f--2-max) * 1rem);
+  --f--2: calc(
+    ((var(--f--2-min) / 16) * 1rem) + (var(--f--2-max) - var(--f--2-min)) *
+      var(--fluid-bp)
+  );
   --f--1-min: 1;
   --f--1-max: 2;
-  --f--1: clamp(var(--f--1-min) * 1rem,
-  ((var(--size-minus) * ((var(--f--1-max) - var(--f--1-min)) / var(--size-w)) + var(--f--1-min)) * 1rem)
-  +
-  ((var(--f--1-max) - 1) / var(--size-w) * 100vw),
-  var(--f--1-max) * 1rem);
+  --f--1: calc(
+    ((var(--f--1-min) / 16) * 1rem) + (var(--f--1-max) - var(--f--1-min)) *
+      var(--fluid-bp)
+  );
   --f-0-min: 1;
   --f-0-max: 2;
-  --f-0: clamp(var(--f-0-min) * 1rem,
-  ((var(--size-minus) * ((var(--f-0-max) - var(--f-0-min)) / var(--size-w)) + var(--f-0-min)) * 1rem)
-  +
-  ((var(--f-0-max) - 1) / var(--size-w) * 100vw),
-  var(--f-0-max) * 1rem);
+  --f-0: calc(
+    ((var(--f-0-min) / 16) * 1rem) + (var(--f-0-max) - var(--f-0-min)) *
+      var(--fluid-bp)
+  );
   --f-1-min: 1;
   --f-1-max: 2;
-  --f-1: clamp(var(--f-1-min) * 1rem,
-  ((var(--size-minus) * ((var(--f-1-max) - var(--f-1-min)) / var(--size-w)) + var(--f-1-min)) * 1rem)
-  +
-  ((var(--f-1-max) - 1) / var(--size-w) * 100vw),
-  var(--f-1-max) * 1rem);
+  --f-1: calc(
+    ((var(--f-1-min) / 16) * 1rem) + (var(--f-1-max) - var(--f-1-min)) *
+      var(--fluid-bp)
+  );
   --f-2-min: 1;
   --f-2-max: 2;
-  --f-2: clamp(var(--f-2-min) * 1rem,
-  ((var(--size-minus) * ((var(--f-2-max) - var(--f-2-min)) / var(--size-w)) + var(--f-2-min)) * 1rem)
-  +
-  ((var(--f-2-max) - 1) / var(--size-w) * 100vw),
-  var(--f-2-max) * 1rem);
+  --f-2: calc(
+    ((var(--f-2-min) / 16) * 1rem) + (var(--f-2-max) - var(--f-2-min)) *
+      var(--fluid-bp)
+  );
   --f-3-min: 1;
   --f-3-max: 2;
-  --f-3: clamp(var(--f-3-min) * 1rem,
-  ((var(--size-minus) * ((var(--f-3-max) - var(--f-3-min)) / var(--size-w)) + var(--f-3-min)) * 1rem)
-  +
-  ((var(--f-3-max) - 1) / var(--size-w) * 100vw),
-  var(--f-3-max) * 1rem);
+  --f-3: calc(
+    ((var(--f-3-min) / 16) * 1rem) + (var(--f-3-max) - var(--f-3-min)) *
+      var(--fluid-bp)
+  );
   --f-4-min: 1;
   --f-4-max: 2;
-  --f-4: clamp(var(--f-4-min) * 1rem,
-  ((var(--size-minus) * ((var(--f-4-max) - var(--f-4-min)) / var(--size-w)) + var(--f-4-min)) * 1rem)
-  +
-  ((var(--f-4-max) - 1) / var(--size-w) * 100vw),
-  var(--f-4-max) * 1rem);
+  --f-4: calc(
+    ((var(--f-4-min) / 16) * 1rem) + (var(--f-4-max) - var(--f-4-min)) *
+      var(--fluid-bp)
+  );
   --f-5-min: 1;
   --f-5-max: 2;
-  --f-5: clamp(var(--f-5-min) * 1rem,
-  ((var(--size-minus) * ((var(--f-5-max) - var(--f-5-min)) / var(--size-w)) + var(--f-5-min)) * 1rem)
-  +
-  ((var(--f-5-max) - 1) / var(--size-w) * 100vw),
-  var(--f-5-max) * 1rem);
+  --f-5: calc(
+    ((var(--f-5-min) / 16) * 1rem) + (var(--f-5-max) - var(--f-5-min)) *
+      var(--fluid-bp)
+  );
   --f-6-min: 1;
   --f-6-max: 2;
-  --f-6: clamp(var(--f-6-min) * 1rem,
-  ((var(--size-minus) * ((var(--f-6-max) - var(--f-6-min)) / var(--size-w)) + var(--f-6-min)) * 1rem)
-  +
-  ((var(--f-6-max) - 1) / var(--size-w) * 100vw),
-  var(--f-6-max) * 1rem);
+  --f-6: calc(
+    ((var(--f-6-min) / 16) * 1rem) + (var(--f-6-max) - var(--f-6-min)) *
+      var(--fluid-bp)
+  );
   --f-7-min: 1;
   --f-7-max: 2;
-  --f-7: clamp(var(--f-7-min) * 1rem,
-  ((var(--size-minus) * ((var(--f-7-max) - var(--f-7-min)) / var(--size-w)) + var(--f-7-min)) * 1rem)
-  +
-  ((var(--f-7-max) - 1) / var(--size-w) * 100vw),
-  var(--f-7-max) * 1rem);
-}
-
-:root {
-  --fluid-min-width: calc( var(--size-min-w) * 16 );
-  --fluid-max-width: calc( var(--size-max-w) * 16 );
-  --fluid-screen: 100vw;
-  --fluid-bp: calc((var(--fluid-screen) - var(--fluid-min-width) / var(--base-type-size) * 1rem) / (var(--fluid-max-width) - var(--fluid-min-width)));
+  --f-7: calc(
+    ((var(--f-7-min) / 16) * 1rem) + (var(--f-7-max) - var(--f-7-min)) *
+      var(--fluid-bp)
+  );
 }
 
 @media screen and (min-width: 1600px) {
@@ -247,30 +230,30 @@ select {
 :root {
   /*
         Stepped Type Scale
-        https://utopia.fyi/type/calculator?c=320,20,1.25,1440,25,1.333,7,3,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l
+        https://utopia.fyi/type/calculator?c=320,20,1.25,1600,25,1.333,7,3,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l
     */
-  --f--3-min: 0.64;
-  --f--3-max: 0.659375;
-  --f--2-min: 0.8;
-  --f--2-max: 0.879375;
-  --f--1-min: 1;
-  --f--1-max: 1.5;
-  --f-0-min: 1.25;
-  --f-0-max: 1.5625;
-  --f-1-min: 1.5625;
-  --f-1-max: 2.0825;
-  --f-2-min: 1.953125;
-  --f-2-max: 2.77625;
-  --f-3-min: 2.44125;
-  --f-3-max: 3.700625;
-  --f-4-min: 3.051875;
-  --f-4-max: 4.933125;
-  --f-5-min: 3.815;
-  --f-5-max: 6.57625;
-  --f-6-min: 4.768125;
-  --f-6-max: 8.76625;
-  --f-7-min: 5.960625;
-  --f-7-max: 11.685;
+  --f--3-min:  10.24;
+  --f--3-max:  10.55;
+  --f--2-min:  12.8;
+  --f--2-max:  14.07;
+  --f--1-min:  16;
+  --f--1-max:  18.75;
+  --f-0-min:  20;
+  --f-0-max:  25;
+  --f-1-min:  25;
+  --f-1-max:  33.32;
+  --f-2-min:  31.25;
+  --f-2-max:  44.42;
+  --f-3-min:  39.06;
+  --f-3-max:  59.21;
+  --f-4-min:  48.83;
+  --f-4-max:  78.93;
+  --f-5-min:  61.04;
+  --f-5-max:  105.22;
+  --f-6-min:  76.29;
+  --f-6-max:  140.26;
+  --f-7-min:  95.37;
+  --f-7-max:  186.96;
 }
 
 :root {
